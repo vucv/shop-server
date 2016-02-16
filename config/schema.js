@@ -1,0 +1,73 @@
+module.exports = {
+        name: 'DB',
+        tables: [
+            {
+                name: 'store',
+                columns: [
+                    {name: 'ID', type: 'TEXT'},
+                    {name: 'name', type: 'TEXT'},
+                    {name: 'address', type: 'TEXT'},
+                    {name: 'icon', type: 'TEXT'},
+                    {name: 'tel', type: 'TEXT'}
+                ]
+            },
+            {
+                name: 'category',
+                columns: [
+                    {name: 'ID', type: 'TEXT'},
+                    {name: 'name', type: 'TEXT'},
+                    {name: 'icon', type: 'TEXT'}
+                ]
+            },
+            {
+                name: 'product',
+                columns: [
+                    {name: 'ID', type: 'TEXT'},
+                    {name: 'categoryID', type: 'INTEGER'},
+                    {name: 'name', type: 'TEXT'},
+                    {name: 'icon', type: 'TEXT'},
+                    {name: 'image', type: 'TEXT'},
+                    {name: 'price', type: 'INTEGER'}
+                ]
+            },
+            {
+                name: 'orders',
+                columns: [
+                    {name: 'ID', type: 'TEXT'},
+                    {name: 'storeID', type: 'INTEGER'},
+                    {name: 'type', type: 'INTEGER'},
+                    {name: 'date', type: 'DATETIME'},
+                    {name: 'note', type: 'TEXT'}
+                ]
+            },
+            {
+                name: 'order_detail',
+                columns: [
+                    {name: 'ID', type: 'TEXT'},
+                    {name: 'ordersID', type: 'INTEGER'},
+                    {name: 'productID', type: 'INTEGER'},
+                    {name: 'total', type: 'INTEGER'},
+                    {name: 'price', type: 'INTEGER'}
+                ]
+            },
+            {
+                name: 'sale',
+                columns: [
+                    {name: 'ID', type: 'TEXT'},
+                    {name: 'date', type: 'INTEGER'},
+                    {name: 'productID', type: 'INTEGER'},
+                    {name: 'total', type: 'INTEGER'},
+                    {name: 'price', type: 'INTEGER'}
+                ]
+            },
+            {
+                name: 'sync_info',
+                columns: [
+                    {name: 'action', type: 'INTEGER'},
+                    {name: 'tableName', type: 'TEXT'},
+                    {name: 'uuid', type: 'TEXT'},
+                    {name: 'timestamp', type: 'TEXT'}
+                ]
+            }
+        ]
+    }
