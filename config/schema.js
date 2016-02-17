@@ -63,9 +63,8 @@ module.exports = {
             {
                 name: 'sync_info',
                 columns: [
-                    {name: 'action', type: 'INTEGER'},
-                    {name: 'tableName', type: 'TEXT'},
-                    {name: 'uuid', type: 'TEXT'},
+                    {name: 'query', type: 'TEXT'},
+                    {name: 'bindings', type: 'TEXT'},
                     {name: 'timestamp', type: 'TEXT'}
                 ]
             }
