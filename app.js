@@ -67,7 +67,7 @@ app.getAll = function (req, res) {
 app.addSync = function (commands) {
     try {
         commands.forEach(function (command) {
-            var query = "INSERT INTO sync_info (query, bindings, timestamp) VALUES (?,?,?)";
+            var query = "INSERT INTO sync_info (query, bindings, timestamp) VALUES (?,?,"+new Date().getTime()+")";
             connection.query(query,[command.query, command.bindings, command.timestamp], function (err) {
                 app.insert(command);
                 console.log('err: ' + err);
