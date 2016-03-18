@@ -121,4 +121,4 @@ DB_CONFIG.tables.forEach(function (table) {
 });
 
 console.log('Error while performing Query.' + DB_CONFIG.name);
-app.listen(4000);
+app.listen(8080);
