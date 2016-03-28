@@ -23,7 +23,10 @@ app.sync = function (req, res, time) {
                 //connection.end();
                 res.writeHead(200, {"Content-Type": "text/html",
                     "Access-Control-Allow-Origin": "*"});
-                res.write(JSON.stringify(rows));
+                var data={};
+                data.syncTime = new Date().getTime();
+                data.rows = rows;
+                res.write(JSON.stringify(data));
                 res.end();
             } else {
                 //connection.end();
@@ -54,6 +57,7 @@ app.getAll = function (req, res) {
                 }
                 if (countTable == 0) {
                     res.writeHead(200, {"Content-Type": "json", "Access-Control-Allow-Origin": "*"});
+                    DB_CONFIG.syncTime = new Date().getTime();
                     res.write(JSON.stringify(DB_CONFIG));
                     res.end();
                 }
