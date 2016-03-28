@@ -21,8 +21,7 @@ app.sync = function (req, res, time) {
             console.log('Error while performing Query.' + err);
             if (!err) {
                 //connection.end();
-                res.writeHead(200, {"Content-Type": "text/html",
-                    "Access-Control-Allow-Origin": "*"});
+                res.writeHead(200, {"Content-Type": "json"});
                 var data={};
                 data.syncTime = new Date().getTime();
                 data.rows = rows;
@@ -56,7 +55,7 @@ app.getAll = function (req, res) {
                     console.log('Error while performing Query.');
                 }
                 if (countTable == 0) {
-                    res.writeHead(200, {"Content-Type": "json", "Access-Control-Allow-Origin": "*"});
+                    res.writeHead(200, {"Content-Type": "json"});
                     DB_CONFIG.syncTime = new Date().getTime();
                     res.write(JSON.stringify(DB_CONFIG));
                     res.end();
@@ -82,7 +81,7 @@ app.addSync = function (commands,req, res) {
                 }
 
                 if (countTable == 0) {
-                    res.writeHead(200, {"Content-Type": "json", "Access-Control-Allow-Origin": "*"});
+                    res.writeHead(200, {"Content-Type": "json"});
                     var data={};
                     data.syncTime = new Date().getTime();
                     res.write(JSON.stringify(data));
