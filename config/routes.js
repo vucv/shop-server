@@ -30,6 +30,6 @@ module.exports = function(app) {
         var queryAsObject = parsedUrl.query;
         console.log("commands: "+ JSON.stringify(queryAsObject));
         var commands = JSON.parse(queryAsObject.commands);
-        app.addSync(commands);
+        app.addSync(commands, req, res);
     });
 };
