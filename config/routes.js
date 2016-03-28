@@ -31,6 +31,5 @@ module.exports = function(app) {
         console.log("commands: "+ JSON.stringify(queryAsObject));
         var commands = JSON.parse(queryAsObject.commands);
         app.addSync(commands);
-        res.send('OK');
     });
 };

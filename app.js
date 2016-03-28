@@ -68,13 +68,26 @@ app.getAll = function (req, res) {
     }
 };
 
-app.addSync = function (commands) {
+app.addSync = function (commands,req, res) {
     try {
+        var countTable = commands.length;
         commands.forEach(function (command) {
-            var query = "INSERT INTO sync_info (query, bindings, timestamp) VALUES (?,?,"+new Date((new Date()).toUTCString()).getTime()+")";
+            var query = "INSERT INTO sync_info (query, bindings, timestamp) VALUES (?,?,"+new Date().getTime()+")";
             connection.query(query,[command.query, command.bindings, command.timestamp], function (err) {
-                app.insert(command);
-                console.log('err: ' + err);
+                countTable--;
+                if(err){
+                    console.log('err: ' + err);
+                }else {
+                    app.insert(command);
+                }
+
+                if (countTable == 0) {
+                    res.writeHead(200, {"Content-Type": "json", "Access-Control-Allow-Origin": "*"});
+                    var data={};
+                    data.syncTime = new Date().getTime();
+                    res.write(JSON.stringify(data));
+                    res.end();
+                }
             });
         });
     } catch (ex) {
@@ -86,7 +99,7 @@ app.addSync = function (commands) {
 app.insert = function (command) {
     try {
 
-        connection.query(command.query, JSON.parse(command.bindings), function (err, rows) {
+        connection.query(command.query, JSON.parse(command.bindings), function (err) {
             console.log('err: ' + err);
         });
     } catch (ex) {
