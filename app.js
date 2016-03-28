@@ -73,8 +73,8 @@ app.addSync = function (commands,req, res) {
     try {
         var countTable = commands.length;
         commands.forEach(function (command) {
-            var query = "INSERT INTO sync_info (query, bindings, timestamp) VALUES (?,?,"+new Date().getTime()+")";
-            connection.query(query,[command.query, command.bindings, command.timestamp], function (err) {
+            var query = "INSERT INTO sync_info (query, bindings, timestamp) VALUES (?,?,?)";
+            connection.query(query,[command.query, command.bindings, new Date().getTime()], function (err) {
                 countTable--;
                 if(err){
                     console.log('err: ' + err);
