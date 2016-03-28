@@ -43,8 +43,10 @@ app.sync = function (req, res, time) {
 app.getAll = function (req, res) {
     console.log('getAll');
     try {
-        var countTable = DB_CONFIG.tables.length;
-        DB_CONFIG.tables.forEach(function (table) {
+        var db = DB_CONFIG;
+        db.tables.pop();
+        var countTable = db.tables.length;
+        db.tables.forEach(function (table) {
             var query = 'SELECT * FROM ' + table.name;
             console.log('query: ' + query);
             connection.query(query, function (err, rows) {
@@ -56,8 +58,8 @@ app.getAll = function (req, res) {
                 }
                 if (countTable == 0) {
                     res.writeHead(200, {"Content-Type": "json"});
-                    DB_CONFIG.syncTime = new Date().getTime();
-                    res.write(JSON.stringify(DB_CONFIG));
+                    db.syncTime = new Date().getTime();
+                    res.write(JSON.stringify(db));
                     res.end();
                 }
             });
@@ -134,19 +136,19 @@ DB_CONFIG.tables.forEach(function (table) {
         columns.push(column.name + ' ' + column.type);
     });
 
-    var query1 = 'DROP TABLE IF EXISTS '+table.name;
+    var query1 = 'DELETE FROM '+table.name;
     connection.query(query, function (err) {
         if(err){
             console.log('Error: ' + err);
         }else {
-            console.log('Error: ' + query1);
+            console.log('Query SS: ' + query1);
         }
         var query = 'CREATE TABLE IF NOT EXISTS ' + table.name + ' (' + columns.join(',') + ')';
         connection.query(query, function (err) {
             if(err){
                 console.log('Error: ' + err);
             }else {
-                console.log('Error: ' + query);
+                console.log('Query SS: ' + query);
             }
         });
     });
