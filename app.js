@@ -18,11 +18,10 @@ app.sync = function (req, res, time) {
         var select = "SELECT * FROM sync_info WHERE timestamp > " + time;
 
         connection.query(select, function (err, rows) {
-            console.log('Error while performing Query.' + err);
             if (!err) {
                 //connection.end();
                 res.writeHead(200, {"Content-Type": "json"});
-                var data={};
+                var data = {};
                 data.syncTime = new Date().getTime();
                 data.rows = rows;
                 res.write(JSON.stringify(data));
@@ -69,22 +68,22 @@ app.getAll = function (req, res) {
     }
 };
 
-app.addSync = function (commands,req, res) {
+app.addSync = function (commands, req, res) {
     try {
         var countTable = commands.length;
         commands.forEach(function (command) {
             var query = "INSERT INTO sync_info (query, bindings, timestamp) VALUES (?,?,?)";
-            connection.query(query,[command.query, command.bindings, new Date().getTime()], function (err) {
+            connection.query(query, [command.query, command.bindings, new Date().getTime()], function (err) {
                 countTable--;
-                if(err){
+                if (err) {
                     console.log('err: ' + err);
-                }else {
+                } else {
                     app.insert(command);
                 }
 
                 if (countTable == 0) {
                     res.writeHead(200, {"Content-Type": "json"});
-                    var data={};
+                    var data = {};
                     data.syncTime = new Date().getTime();
                     res.write(JSON.stringify(data));
                     res.end();
@@ -136,21 +135,13 @@ DB_CONFIG.tables.forEach(function (table) {
         columns.push(column.name + ' ' + column.type);
     });
 
-    var query1 = 'DELETE FROM '+table.name;
+    var query = 'CREATE TABLE IF NOT EXISTS ' + table.name + ' (' + columns.join(',') + ')';
     connection.query(query, function (err) {
-        if(err){
+        if (err) {
             console.log('Error: ' + err);
-        }else {
-            console.log('Query SS: ' + query1);
+        } else {
+            console.log('Query SS: ' + query);
         }
-        var query = 'CREATE TABLE IF NOT EXISTS ' + table.name + ' (' + columns.join(',') + ')';
-        connection.query(query, function (err) {
-            if(err){
-                console.log('Error: ' + err);
-            }else {
-                console.log('Query SS: ' + query);
-            }
-        });
     });
 });
 
