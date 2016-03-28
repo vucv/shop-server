@@ -134,12 +134,22 @@ DB_CONFIG.tables.forEach(function (table) {
         columns.push(column.name + ' ' + column.type);
     });
 
-    var query = 'CREATE TABLE IF NOT EXISTS ' + table.name + ' (' + columns.join(',') + ')';
-    console.log('Error: ' + query);
+    var query1 = 'DROP TABLE IF EXISTS '+table.name;
     connection.query(query, function (err) {
-        console.log('Error: ' + err);
+        if(err){
+            console.log('Error: ' + err);
+        }else {
+            console.log('Error: ' + query1);
+        }
+        var query = 'CREATE TABLE IF NOT EXISTS ' + table.name + ' (' + columns.join(',') + ')';
+        connection.query(query, function (err) {
+            if(err){
+                console.log('Error: ' + err);
+            }else {
+                console.log('Error: ' + query);
+            }
+        });
     });
-
 });
 
 console.log('Error while performing Query.' + DB_CONFIG.name);
