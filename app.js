@@ -121,8 +121,9 @@ connection.query("CREATE DATABASE IF NOT EXISTS " + DB_CONFIG.name, function (er
     console.log('Error: ' + err);
 });
 
-var query = 'DROP TABLE sync_info';
+var query = 'DROP TABLE IF EXISTS sync_info';
 connection.query(query, function (err) {
+    console.log('Error: ' + err);
     console.log('Error: ' + query);
 });
 
