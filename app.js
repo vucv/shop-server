@@ -70,26 +70,35 @@ app.getAll = function (req, res) {
 
 app.addSync = function (commands, req, res) {
     try {
-        var countTable = commands.length;
-        commands.forEach(function (command) {
-            var query = "INSERT INTO sync_info (query, bindings, timestamp) VALUES (?,?,?)";
-            connection.query(query, [command.query, command.bindings, new Date().getTime()], function (err) {
-                countTable--;
-                if (err) {
-                    console.log('err: ' + err);
-                } else {
-                    app.insert(command);
-                }
+        var countCommand = commands.length;
+        if(countCommand > 0) {
+            commands.forEach(function (command) {
+                var query = "INSERT INTO sync_info (query, bindings, timestamp) VALUES (?,?,?)";
+                connection.query(query, [command.query, command.bindings, new Date().getTime()], function (err) {
+                    countCommand--;
+                    if (err) {
+                        console.log('err: ' + err);
+                    } else {
+                        app.insert(command);
+                    }
 
-                if (countTable == 0) {
-                    res.writeHead(200, {"Content-Type": "json"});
-                    var data = {};
-                    data.syncTime = new Date().getTime();
-                    res.write(JSON.stringify(data));
-                    res.end();
-                }
+                    if (countCommand == 0) {
+                        res.writeHead(200, {"Content-Type": "json"});
+                        var data = {};
+                        data.syncTime = new Date().getTime();
+                        res.write(JSON.stringify(data));
+                        res.end();
+                    }
+                });
             });
-        });
+        }else {
+            res.writeHead(200, {"Content-Type": "json"});
+            var data = {};
+            data.syncTime = new Date().getTime();
+            res.write(JSON.stringify(data));
+            res.end();
+        }
+
     } catch (ex) {
         console.log('Error while performing Query: ' + ex);
     }
