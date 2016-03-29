@@ -65,7 +65,7 @@ module.exports = {
                 columns: [
                     {name: 'query', type: 'TEXT'},
                     {name: 'bindings', type: 'TEXT'},
-                    {name: 'timestamp', type: 'long'}
+                    {name: 'timestamp', type: 'INTEGER'}
                 ]
             }
         ]
