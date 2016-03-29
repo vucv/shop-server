@@ -23,19 +23,19 @@ module.exports = {
                 name: 'product',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'categoryID', type: 'INTEGER'},
+                    {name: 'categoryID', type: 'INT'},
                     {name: 'name', type: 'TEXT'},
                     {name: 'icon', type: 'TEXT'},
                     {name: 'image', type: 'TEXT'},
-                    {name: 'price', type: 'INTEGER'}
+                    {name: 'price', type: 'INT'}
                 ]
             },
             {
                 name: 'orders',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'storeID', type: 'INTEGER'},
-                    {name: 'type', type: 'INTEGER'},
+                    {name: 'storeID', type: 'INT'},
+                    {name: 'type', type: 'INT'},
                     {name: 'date', type: 'DATETIME'},
                     {name: 'note', type: 'TEXT'}
                 ]
@@ -44,20 +44,20 @@ module.exports = {
                 name: 'order_detail',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'ordersID', type: 'INTEGER'},
-                    {name: 'productID', type: 'INTEGER'},
-                    {name: 'total', type: 'INTEGER'},
-                    {name: 'price', type: 'INTEGER'}
+                    {name: 'ordersID', type: 'INT'},
+                    {name: 'productID', type: 'INT'},
+                    {name: 'total', type: 'INT'},
+                    {name: 'price', type: 'INT'}
                 ]
             },
             {
                 name: 'sale',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'date', type: 'INTEGER'},
-                    {name: 'productID', type: 'INTEGER'},
-                    {name: 'total', type: 'INTEGER'},
-                    {name: 'price', type: 'INTEGER'}
+                    {name: 'date', type: 'INT'},
+                    {name: 'productID', type: 'INT'},
+                    {name: 'total', type: 'INT'},
+                    {name: 'price', type: 'INT'}
                 ]
             },
             {
@@ -65,7 +65,7 @@ module.exports = {
                 columns: [
                     {name: 'query', type: 'TEXT'},
                     {name: 'bindings', type: 'TEXT'},
-                    {name: 'timestamp', type: 'INTEGER'}
+                    {name: 'timestamp', type: 'BIGINT'}
                 ]
             }
         ]
