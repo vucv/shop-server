@@ -5,18 +5,18 @@ module.exports = {
                 name: 'store',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'name', type: 'TEXT'},
-                    {name: 'address', type: 'TEXT'},
-                    {name: 'icon', type: 'TEXT'},
-                    {name: 'tel', type: 'TEXT'}
+                    {name: 'name', type: 'TEXT charset=utf8'},
+                    {name: 'address', type: 'TEXT charset=utf8'},
+                    {name: 'icon', type: 'TEXT charset=utf8'},
+                    {name: 'tel', type: 'TEXT charset=utf8'}
                 ]
             },
             {
                 name: 'category',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'name', type: 'TEXT'},
-                    {name: 'icon', type: 'TEXT'}
+                    {name: 'name', type: 'TEXT charset=utf8'},
+                    {name: 'icon', type: 'TEXT charset=utf8'}
                 ]
             },
             {
@@ -24,9 +24,9 @@ module.exports = {
                 columns: [
                     {name: 'ID', type: 'TEXT'},
                     {name: 'categoryID', type: 'INT'},
-                    {name: 'name', type: 'TEXT'},
-                    {name: 'icon', type: 'TEXT'},
-                    {name: 'image', type: 'TEXT'},
+                    {name: 'name', type: 'TEXT charset=utf8'},
+                    {name: 'icon', type: 'TEXT charset=utf8'},
+                    {name: 'image', type: 'TEXT charset=utf8'},
                     {name: 'price', type: 'INT'}
                 ]
             },
@@ -34,7 +34,7 @@ module.exports = {
                 name: 'orders',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'storeID', type: 'INT'},
+                    {name: 'storeID', type: 'INT charset=utf8'},
                     {name: 'type', type: 'INT'},
                     {name: 'date', type: 'DATETIME'},
                     {name: 'note', type: 'TEXT'}
@@ -63,8 +63,8 @@ module.exports = {
             {
                 name: 'sync_info',
                 columns: [
-                    {name: 'query', type: 'TEXT'},
-                    {name: 'bindings', type: 'TEXT'},
+                    {name: 'query', type: 'TEXT  charset=utf8'},
+                    {name: 'bindings', type: 'TEXT  charset=utf8'},
                     {name: 'timestamp', type: 'BIGINT'}
                 ]
             }

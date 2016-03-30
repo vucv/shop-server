@@ -6,7 +6,8 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'DB'
+    database: 'DB',
+    charset: 'utf8'
 });
 
 app.use(bodyParser.urlencoded({extended: false}));
