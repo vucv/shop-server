@@ -5,37 +5,37 @@ module.exports = {
                 name: 'store',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'name', type: 'TEXT utf8_unicode_ci'},
-                    {name: 'address', type: 'TEXT utf8_unicode_ci'},
-                    {name: 'icon', type: 'TEXT utf8_unicode_ci'},
-                    {name: 'tel', type: 'TEXT utf8_unicode_ci'}
+                    {name: 'name', type: 'TEXT'},
+                    {name: 'address', type: 'TEXT'},
+                    {name: 'icon', type: 'TEXT'},
+                    {name: 'tel', type: 'TEXT'}
                 ]
             },
             {
                 name: 'category',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'name', type: 'TEXT utf8_unicode_ci'},
-                    {name: 'icon', type: 'TEXT utf8_unicode_ci'}
+                    {name: 'name', type: 'TEXT'},
+                    {name: 'icon', type: 'TEXT'}
                 ]
             },
             {
                 name: 'product',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'categoryID', type: 'INT'},
-                    {name: 'name', type: 'TEXT utf8_unicode_ci'},
-                    {name: 'icon', type: 'TEXT utf8_unicode_ci'},
-                    {name: 'image', type: 'TEXT utf8_unicode_ci'},
-                    {name: 'price', type: 'INT'}
+                    {name: 'categoryID', type: 'INTEGER'},
+                    {name: 'name', type: 'TEXT'},
+                    {name: 'icon', type: 'TEXT'},
+                    {name: 'image', type: 'TEXT'},
+                    {name: 'price', type: 'INTEGER'}
                 ]
             },
             {
                 name: 'orders',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'storeID', type: 'INT utf8_unicode_ci'},
-                    {name: 'type', type: 'INT'},
+                    {name: 'storeID', type: 'INTEGER'},
+                    {name: 'type', type: 'INTEGER'},
                     {name: 'date', type: 'DATETIME'},
                     {name: 'note', type: 'TEXT'}
                 ]
@@ -44,27 +44,27 @@ module.exports = {
                 name: 'order_detail',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'ordersID', type: 'INT'},
-                    {name: 'productID', type: 'INT'},
-                    {name: 'total', type: 'INT'},
-                    {name: 'price', type: 'INT'}
+                    {name: 'ordersID', type: 'INTEGER'},
+                    {name: 'productID', type: 'INTEGER'},
+                    {name: 'total', type: 'INTEGER'},
+                    {name: 'price', type: 'INTEGER'}
                 ]
             },
             {
                 name: 'sale',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'date', type: 'INT'},
-                    {name: 'productID', type: 'INT'},
-                    {name: 'total', type: 'INT'},
-                    {name: 'price', type: 'INT'}
+                    {name: 'date', type: 'INTEGER'},
+                    {name: 'productID', type: 'INTEGER'},
+                    {name: 'total', type: 'INTEGER'},
+                    {name: 'price', type: 'INTEGER'}
                 ]
             },
             {
                 name: 'sync_info',
                 columns: [
-                    {name: 'query', type: 'TEXT  utf8_unicode_ci'},
-                    {name: 'bindings', type: 'TEXT  utf8_unicode_ci'},
+                    {name: 'query', type: 'TEXT'},
+                    {name: 'bindings', type: 'TEXT'},
                     {name: 'timestamp', type: 'BIGINT'}
                 ]
             }
