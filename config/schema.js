@@ -5,18 +5,18 @@ module.exports = {
                 name: 'store',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'name', type: 'TEXT charset=utf8'},
-                    {name: 'address', type: 'TEXT charset=utf8'},
-                    {name: 'icon', type: 'TEXT charset=utf8'},
-                    {name: 'tel', type: 'TEXT charset=utf8'}
+                    {name: 'name', type: 'TEXT utf8_unicode_ci'},
+                    {name: 'address', type: 'TEXT utf8_unicode_ci'},
+                    {name: 'icon', type: 'TEXT utf8_unicode_ci'},
+                    {name: 'tel', type: 'TEXT utf8_unicode_ci'}
                 ]
             },
             {
                 name: 'category',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'name', type: 'TEXT charset=utf8'},
-                    {name: 'icon', type: 'TEXT charset=utf8'}
+                    {name: 'name', type: 'TEXT utf8_unicode_ci'},
+                    {name: 'icon', type: 'TEXT utf8_unicode_ci'}
                 ]
             },
             {
@@ -24,9 +24,9 @@ module.exports = {
                 columns: [
                     {name: 'ID', type: 'TEXT'},
                     {name: 'categoryID', type: 'INT'},
-                    {name: 'name', type: 'TEXT charset=utf8'},
-                    {name: 'icon', type: 'TEXT charset=utf8'},
-                    {name: 'image', type: 'TEXT charset=utf8'},
+                    {name: 'name', type: 'TEXT utf8_unicode_ci'},
+                    {name: 'icon', type: 'TEXT utf8_unicode_ci'},
+                    {name: 'image', type: 'TEXT utf8_unicode_ci'},
                     {name: 'price', type: 'INT'}
                 ]
             },
@@ -34,7 +34,7 @@ module.exports = {
                 name: 'orders',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'storeID', type: 'INT charset=utf8'},
+                    {name: 'storeID', type: 'INT utf8_unicode_ci'},
                     {name: 'type', type: 'INT'},
                     {name: 'date', type: 'DATETIME'},
                     {name: 'note', type: 'TEXT'}
@@ -63,8 +63,8 @@ module.exports = {
             {
                 name: 'sync_info',
                 columns: [
-                    {name: 'query', type: 'TEXT  charset=utf8'},
-                    {name: 'bindings', type: 'TEXT  charset=utf8'},
+                    {name: 'query', type: 'TEXT  utf8_unicode_ci'},
+                    {name: 'bindings', type: 'TEXT  utf8_unicode_ci'},
                     {name: 'timestamp', type: 'BIGINT'}
                 ]
             }
