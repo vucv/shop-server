@@ -27,7 +27,10 @@ module.exports = {
                     {name: 'name', type: 'TEXT'},
                     {name: 'icon', type: 'TEXT'},
                     {name: 'image', type: 'TEXT'},
-                    {name: 'price', type: 'INTEGER'}
+                    {name: 'total', type: 'INTEGER'},
+                    {name: 'available', type: 'INTEGER'},
+                    {name: 'price', type: 'INTEGER'},
+                    {name: 'priceCore', type: 'INTEGER'}
                 ]
             },
             {
@@ -37,7 +40,8 @@ module.exports = {
                     {name: 'storeID', type: 'INTEGER'},
                     {name: 'type', type: 'INTEGER'},
                     {name: 'date', type: 'DATETIME'},
-                    {name: 'note', type: 'TEXT'}
+                    {name: 'price', type: 'INTEGER'},
+                    {name: 'total', type: 'INTEGER'}
                 ]
             },
             {
@@ -47,6 +51,7 @@ module.exports = {
                     {name: 'ordersID', type: 'INTEGER'},
                     {name: 'productID', type: 'INTEGER'},
                     {name: 'total', type: 'INTEGER'},
+                    {name: 'priceCore', type: 'INTEGER'},
                     {name: 'price', type: 'INTEGER'}
                 ]
             },
