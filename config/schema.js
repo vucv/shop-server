@@ -62,6 +62,7 @@ module.exports = {
                     {name: 'date', type: 'INTEGER'},
                     {name: 'productID', type: 'INTEGER'},
                     {name: 'total', type: 'INTEGER'},
+                    {name: 'priceCore', type: 'INTEGER'},
                     {name: 'price', type: 'INTEGER'}
                 ]
             },
