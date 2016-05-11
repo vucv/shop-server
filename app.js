@@ -109,13 +109,10 @@ app.addSync = function (commands, req, res) {
 
 app.addDB = function (database, req, res) {
     try {
-        console.log('log 1');
-        database.tables.forEach(function (table) {
+        database.tables.forEach( function (table) {
             if(table.name != 'sync_info') {
-                var query1 = 'DELETE FROM ' + table.name;
-                console.log('query1 '+ query1);
-                connection.query(query1,function (err, result) {
-                    console.log('Error while performing Query: ' + err);
+                var query = 'DELETE FROM ' + table.name;
+                connection.query(query)
                     var columns = [];
                     table.columns.forEach(function (column) {
                         columns.push(column.name);
@@ -129,10 +126,11 @@ app.addDB = function (database, req, res) {
                         var query = 'INSERT INTO ' + table.name + ' (' + columns.join(',') + ') VALUES (' + values.join(',') + ')';
                         connection.query(query);
                     });
-                });
+
             }
         });
     } catch (ex) {
+
         console.log('Error while performing Query: ' + ex);
     }
     res.writeHead(200, {"Content-Type": "json"});
