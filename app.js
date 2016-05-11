@@ -110,25 +110,26 @@ app.addSync = function (commands, req, res) {
 app.addDB = function (database, req, res) {
     try {
         database.tables.forEach( function (table) {
-            var query = 'DELETE FROM ' + table.name;
-            connection.query(query,function (err) {
-                var columns = [];
-                table.columns.forEach(function (column) {
-                    columns.push(column.name);
-                });
-
-                table.rows.forEach(function (row) {
-                    var values = [];
+            if(table.name != 'sync_info') {
+                var query = 'DELETE FROM ' + table.name;
+                connection.query(query,function (err) {
+                    var columns = [];
                     table.columns.forEach(function (column) {
-                        values.push("'" + row[column.name] + "'");
+                        columns.push(column.name);
                     });
-                    var query = 'INSERT INTO ' + table.name + ' (' + columns.join(',') + ') VALUES (' + values.join(',') + ')';
-                    connection.query(query);
+
+                    table.rows.forEach(function (row) {
+                        var values = [];
+                        table.columns.forEach(function (column) {
+                            values.push("'" + row[column.name] + "'");
+                        });
+                        var query = 'INSERT INTO ' + table.name + ' (' + columns.join(',') + ') VALUES (' + values.join(',') + ')';
+                        connection.query(query);
+                    });
                 });
-            });
+            }
         });
     } catch (ex) {
-
         console.log('Error while performing Query: ' + ex);
     }
     res.writeHead(200, {"Content-Type": "json"});
