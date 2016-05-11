@@ -45,7 +45,10 @@ app.getAll = function (req, res) {
         var db = DB_CONFIG;
         var countTable = db.tables.length;
         db.tables.forEach(function (table) {
-            if(table.name == 'sync_info') continue;
+            if(table.name == 'sync_info') {
+                countTable--;
+                continue;
+            }
             var query = 'SELECT * FROM ' + table.name;
             connection.query(query, function (err, rows) {
                 countTable--;
