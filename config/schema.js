@@ -23,7 +23,7 @@ module.exports = {
                 name: 'product',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'categoryID', type: 'INTEGER'},
+                    {name: 'categoryID', type: 'TEXT'},
                     {name: 'name', type: 'TEXT'},
                     {name: 'icon', type: 'TEXT'},
                     {name: 'image', type: 'TEXT'},
@@ -37,7 +37,7 @@ module.exports = {
                 name: 'orders',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'storeID', type: 'INTEGER'},
+                    {name: 'storeID', type: 'TEXT'},
                     {name: 'type', type: 'INTEGER'},
                     {name: 'date', type: 'DATETIME'},
                     {name: 'price', type: 'INTEGER'},
@@ -48,8 +48,8 @@ module.exports = {
                 name: 'order_detail',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'ordersID', type: 'INTEGER'},
-                    {name: 'productID', type: 'INTEGER'},
+                    {name: 'ordersID', type: 'TEXT'},
+                    {name: 'productID', type: 'TEXT'},
                     {name: 'total', type: 'INTEGER'},
                     {name: 'priceCore', type: 'INTEGER'},
                     {name: 'price', type: 'INTEGER'}
