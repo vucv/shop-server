@@ -41,14 +41,12 @@ app.sync = function (req, res, time) {
 };
 
 app.getAll = function (req, res) {
-    console.log('getAll');
     try {
         var db = DB_CONFIG;
         db.tables.pop();
         var countTable = db.tables.length;
         db.tables.forEach(function (table) {
             var query = 'SELECT * FROM ' + table.name;
-            console.log('query: ' + query);
             connection.query(query, function (err, rows) {
                 countTable--;
                 if (!err) {
@@ -108,8 +106,12 @@ app.addSync = function (commands, req, res) {
 
 app.addDB = function (database, req, res) {
     try {
-
+        var query = 'DELETE FROM ' + table.name;
+                    connection.query(query);
         database.tables.forEach( function (table) {
+            var query = 'DELETE  ' + table.name + ' (' + columns.join(',') + ') VALUES (' + values.join(',') + ')';
+                            connection.query(query);
+
             var columns = [];
 
             table.columns.forEach(function (column) {
