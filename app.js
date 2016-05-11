@@ -109,7 +109,7 @@ app.addSync = function (commands, req, res) {
 app.addDB = function (database, req, res) {
     try {
 
-        database.table.forEach( function (table) {
+        database.tables.forEach( function (table) {
             var columns = [];
 
             table.columns.forEach(function (column) {
