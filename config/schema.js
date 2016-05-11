@@ -39,7 +39,7 @@ module.exports = {
                     {name: 'ID', type: 'TEXT'},
                     {name: 'storeID', type: 'TEXT'},
                     {name: 'type', type: 'INTEGER'},
-                    {name: 'date', type: 'DATETIME'},
+                    {name: 'date', type: 'BIGINT'},
                     {name: 'price', type: 'INTEGER'},
                     {name: 'total', type: 'INTEGER'}
                 ]
@@ -59,7 +59,7 @@ module.exports = {
                 name: 'sale',
                 columns: [
                     {name: 'ID', type: 'TEXT'},
-                    {name: 'date', type: 'INTEGER'},
+                    {name: 'date', type: 'BIGINT'},
                     {name: 'productID', type: 'INTEGER'},
                     {name: 'total', type: 'INTEGER'},
                     {name: 'priceCore', type: 'INTEGER'},
