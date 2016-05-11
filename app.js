@@ -109,10 +109,11 @@ app.addSync = function (commands, req, res) {
 
 app.addDB = function (database, req, res) {
     try {
-        database.tables.forEach( function (table) {
+        database.tables.forEach(function (table) {
             if(table.name != 'sync_info') {
                 var query = 'DELETE FROM ' + table.name;
-                connection.query(query,function (err) {
+                connection.query(query,function (err, result) {
+                    console.log('Error while performing Query: ' + err);
                     var columns = [];
                     table.columns.forEach(function (column) {
                         columns.push(column.name);
