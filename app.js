@@ -106,6 +106,44 @@ app.addSync = function (commands, req, res) {
 
 };
 
+app.addDB = function (database, req, res) {
+    try {
+
+        database.table.forEach( function (table) {
+            var columns = [];
+
+            table.columns.forEach(function (column) {
+                columns.push(column.name);
+            });
+
+            table.rows.forEach(function (row) {
+                var values = [];
+                table.columns.forEach(function (column) {
+                    values.push("'" + row[column.name] + "'");
+                });
+                var query = 'INSERT INTO ' + table.name + ' (' + columns.join(',') + ') VALUES (' + values.join(',') + ')';
+                connection.query(query);
+            });
+
+        });
+
+        res.writeHead(200, {"Content-Type": "json"});
+        var data = {};
+        data.syncTime = new Date().getTime();
+        res.write(JSON.stringify(data));
+        res.end();
+
+    } catch (ex) {
+        res.writeHead(200, {"Content-Type": "json"});
+        var data = {};
+        data.syncTime = new Date().getTime();
+        res.write(JSON.stringify(data));
+        res.end();
+        console.log('Error while performing Query: ' + ex);
+    }
+
+};
+
 app.insert = function (command) {
     try {
 

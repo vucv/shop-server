@@ -32,4 +32,12 @@ module.exports = function(app) {
         var commands = JSON.parse(queryAsObject.commands);
         app.addSync(commands, req, res);
     });
+
+    app.post('/push', function(req, res) {
+        allowCrossDomain(req, res);
+        var parsedUrl = url.parse(req.url, true); // true to get query as object
+        var queryAsObject = parsedUrl.query;
+        var DB = JSON.parse(queryAsObject.DB);
+        app.addDB(DB, req, res);
+    });
 };
