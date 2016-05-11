@@ -47,23 +47,23 @@ app.getAll = function (req, res) {
         db.tables.forEach(function (table) {
             if(table.name == 'sync_info') {
                 countTable--;
-                continue;
+            }else{
+                var query = 'SELECT * FROM ' + table.name;
+                connection.query(query, function (err, rows) {
+                    countTable--;
+                    if (!err) {
+                        table.rows = rows;
+                    } else {
+                        console.log('Error while performing Query.');
+                    }
+                    if (countTable == 0) {
+                        res.writeHead(200, {"Content-Type": "json"});
+                        db.syncTime = new Date().getTime();
+                        res.write(JSON.stringify(db));
+                        res.end();
+                    }
+                });
             }
-            var query = 'SELECT * FROM ' + table.name;
-            connection.query(query, function (err, rows) {
-                countTable--;
-                if (!err) {
-                    table.rows = rows;
-                } else {
-                    console.log('Error while performing Query.');
-                }
-                if (countTable == 0) {
-                    res.writeHead(200, {"Content-Type": "json"});
-                    db.syncTime = new Date().getTime();
-                    res.write(JSON.stringify(db));
-                    res.end();
-                }
-            });
         });
     } catch (ex) {
         console.log('Error while performing Query: ' + ex);
