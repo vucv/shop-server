@@ -1,5 +1,5 @@
 module.exports = {
-        name: 'DB',
+        name: 'DB_BN',
         tables: [
             {
                 name: 'store',
